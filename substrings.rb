@@ -1,16 +1,15 @@
-require 'pry-byebug'
-
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
 def substrings(word, substring_array)
   substrings_found = Hash.new(0)
-  word = word.downcase
-  substring_array.each do |item|
-    
-    substrings_found[item] += 1 if word.include?(item)
+  word = word.downcase.split(' ')
+  word.each do |item|
+    substring_array.each do |string|
+      substrings_found[string] += 1 if item.include?(string)
+    end
   end
-  
-  print substrings_found
+
+  puts substrings_found
 end
 
-substrings("Howdy", dictionary)
+substrings("Howdy partner, sit down! How's it going?", dictionary)
